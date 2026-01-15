@@ -1,24 +1,31 @@
 package Swag_Labs;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Home{
 
 	WebDriver driver;
-	@FindBy(xpath = "//a[@id='item_4_img_link']")WebElement imageClick;
-	@FindBy(xpath = "//button[@id='add-to-cart']")WebElement addToCart;
+	WebDriverWait wait;
+	@FindBy(xpath = "//img[@alt='Sauce Labs Backpack']")WebElement imageClick;
+	@FindBy(xpath = "//button[text()='Add to cart']")WebElement addToCart;
 	
 	public Home(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
+		wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 	public void img() {
-		imageClick.click();
+		wait.until(ExpectedConditions.elementToBeClickable(imageClick)).click();
+
 	}
 	public void cart() {
-		addToCart.click();
+		wait.until(ExpectedConditions.elementToBeClickable(addToCart)).click();
 	}
 }

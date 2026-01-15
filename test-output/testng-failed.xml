@@ -5,8 +5,10 @@
     <classes>
       <class name="Test.Test_Page">
         <methods>
+          <include name="browserclose"/>
+          <include name="start"/>
+          <include name="setup"/>
           <include name="tearDown"/>
-          <include name="base"/>
           <include name="test2"/>
         </methods>
       </class> <!-- Test.Test_Page -->
